@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los 40 de Vero y Emilia</title>
+<meta property="og:title" content="Los 40 de Vero y Emilia">
+<meta property="og:description" content="Viernes 20/11 · 20:00 hs · Bodega Castillo Viejo. ¡Estás invitado!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cumple40veroemi.vercel.app/">
+<meta property="og:image" content="https://cumple40veroemi.vercel.app/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito:wght@600;700&display=swap">
+<style>
+:root {
+  --cream: #f8f0e4;
+  --sage: #55664f;
+  --forest: #1f3a2b;
+  --rose: #e8b8ae;
+  --scrim: rgba(31, 58, 43, .45);
+  --font-hand: "Caveat", "Segoe Script", cursive;
+  --font-body: "Nunito", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--cream);
+  color: var(--forest);
+  font-family: var(--font-body);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.wrap { max-width: 560px; margin: 0 auto; position: relative; }
+.wrap img.card { display: block; width: 100%; height: auto; }
+
+/* Botón invisible sobre "¡Click para ver cómo llegar!" */
+.hot {
+  position: absolute; left: 36%; top: 58.8%; width: 47%; height: 5.2%;
+  border: 0; background: transparent; cursor: pointer; border-radius: 999px;
+  -webkit-tap-highlight-color: transparent;
+}
+.hot::after {
+  content: ""; position: absolute; left: 1%; top: 6%; width: 80%; height: 88%;
+  border-radius: 999px; border: 2px solid var(--rose);
+  animation: pulse 2.2s ease-out infinite;
+}
+.hot:focus-visible { outline: 3px solid var(--forest); outline-offset: 2px; }
+@keyframes pulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.12, 1.45); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hot::after { animation: none; opacity: 0; } }
+
+/* Confirmar asistencia */
+.rsvp { max-width: 560px; margin: 0 auto; padding: 8px 20px 40px; text-align: center; }
+.rsvp h2 { font-family: var(--font-hand); font-size: 2.2rem; line-height: 1.1; margin: 0 0 6px; font-weight: 600; text-wrap: balance; }
+.rsvp p { margin: 0 0 18px; color: var(--sage); font-size: 1rem; line-height: 1.4; }
+.rsvp a.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 52px;
+  padding: 0 28px; border-radius: 999px; background: var(--forest); color: var(--cream);
+  font-weight: 700; font-size: 1.05rem; text-decoration: none; border: 2px solid var(--forest);
+}
+.rsvp a.btn:hover, .rsvp a.btn:focus-visible { background: var(--sage); border-color: var(--sage); outline: none; }
+
+/* Selector de mapas */
+.scrim {
+  position: fixed; inset: 0; background: var(--scrim); display: flex;
+  align-items: flex-end; justify-content: center; z-index: 20;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.scrim.open { opacity: 1; pointer-events: auto; }
+.sheet {
+  background: var(--cream); width: 100%; max-width: 480px;
+  border-radius: 22px 22px 0 0; border-top: 4px solid var(--rose);
+  padding: 22px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(24px); transition: transform .22s ease-out;
+}
+.scrim.open .sheet { transform: none; }
+@media (min-width: 600px) {
+  .scrim { align-items: center; }
+  .sheet { border-radius: 22px; }
+}
+.sheet h2 { font-family: var(--font-hand); font-size: 2rem; line-height: 1.1; margin: 0 0 4px; font-weight: 600; text-wrap: balance; }
+.sheet p { margin: 0 0 18px; font-size: .95rem; line-height: 1.4; color: var(--sage); }
+.opts { display: grid; gap: 12px; }
+.opt {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px; min-height: 56px;
+  background: #fff9f1; border: 2px solid var(--forest); border-radius: 14px;
+  color: var(--forest); text-decoration: none; font-weight: 700; font-size: 1.05rem;
+}
+.opt:hover, .opt:focus-visible { background: var(--rose); outline: none; }
+.opt svg { flex: none; width: 30px; height: 30px; }
+.opt small { display: block; font-weight: 600; font-size: .8rem; color: var(--sage); }
+.close {
+  margin-top: 14px; width: 100%; min-height: 44px; border: 0; background: transparent;
+  color: var(--sage); font: 700 .95rem var(--font-body); cursor: pointer; text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <img class="card" src="inv.jpg" alt="Invitación: Los 40 de Vero y Emilia. Viernes 20/11, 20:00 hs, Bodega Castillo Viejo.">
+  <button class="hot" id="open" aria-label="Ver cómo llegar a Bodega Castillo Viejo"></button>
+</main>
+
+<section class="rsvp" id="rsvp" hidden>
+  <h2>¿Venís a festejar?</h2>
+  <p>Contanos si podés venir y cuántos son, así reservamos lugar para todos.</p>
+  <a class="btn" id="rsvp-link" href="#" target="_blank" rel="noopener">Confirmar asistencia</a>
+</section>
+
+<div class="scrim" id="scrim" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="t">
+    <h2 id="t">¿Cómo querés llegar?</h2>
+    <p>Bodegas Castillo Viejo, Ruta 68 km 24, Las Piedras, Canelones.</p>
+    <div class="opts">
+      <a class="opt" id="waze" target="_blank" rel="noopener"
+         href="https://waze.com/ul?q=Bodegas%20Castillo%20Viejo%2C%20Ruta%2068%20km%2024%2C%20Las%20Piedras%2C%20Uruguay&navigate=yes">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="15" r="12" fill="#33ccff" stroke="#1f3a2b" stroke-width="2"/><circle cx="12" cy="13" r="1.8" fill="#1f3a2b"/><circle cx="20" cy="13" r="1.8" fill="#1f3a2b"/><path d="M11.5 18c2.6 2.4 6.4 2.4 9 0" fill="none" stroke="#1f3a2b" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="27" r="2.5" fill="#1f3a2b"/><circle cx="21" cy="27" r="2.5" fill="#1f3a2b"/></svg>
+        <span>Waze<small>Abrir en la app</small></span>
+      </a>
+      <a class="opt" id="gmaps" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Bodegas%20Castillo%20Viejo%2C%20Ruta%2068%20km%2024%2C%20Las%20Piedras%2C%20Canelones%2C%20Uruguay">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C10.5 2 6.5 6.2 6.5 11.5 6.5 18.5 16 30 16 30s9.5-11.5 9.5-18.5C25.5 6.2 21.5 2 16 2z" fill="#e8584a" stroke="#1f3a2b" stroke-width="2"/><circle cx="16" cy="11.5" r="3.6" fill="#fff9f1" stroke="#1f3a2b" stroke-width="1.5"/></svg>
+        <span>Google Maps<small>Abrir en la app</small></span>
+      </a>
+    </div>
+    <button class="close" id="close" type="button">Cerrar</button>
+  </div>
+</div>
+
+<script>
+// Pegá acá el link de tu Formulario de Google (entre las comillas).
+// Mientras esté vacío, el botón "Confirmar asistencia" no se muestra.
+var FORM_URL = "https://forms.gle/bBoGd5FnFdHfrq196";
+
+(function () {
+  if (FORM_URL) {
+    document.getElementById('rsvp-link').href = FORM_URL;
+    document.getElementById('rsvp').hidden = false;
+  }
+  var scrim = document.getElementById('scrim');
+  var openBtn = document.getElementById('open');
+  function show(v) {
+    scrim.classList.toggle('open', v);
+    scrim.setAttribute('aria-hidden', v ? 'false' : 'true');
+    if (v) document.getElementById('waze').focus(); else openBtn.focus();
+  }
+  openBtn.addEventListener('click', function () { show(true); });
+  document.getElementById('close').addEventListener('click', function () { show(false); });
+  scrim.addEventListener('click', function (e) { if (e.target === scrim) show(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false); });
+  ['waze', 'gmaps'].forEach(function (id) {
+    document.getElementById(id).addEventListener('click', function () { setTimeout(function () { show(false); }, 300); });
+  });
+})();
+</script>
+</body>
+</html>
